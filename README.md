@@ -1,8 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Simple Vercel AI Chat
+
+A simple chat application built with Next.js 14+, Vercel AI SDK, and OpenAI's GPT-4o-mini model.
+
+## Features
+
+- Real-time streaming chat responses
+- Conversation management with message history
+- Clean and responsive UI with Tailwind CSS
+- Built with TypeScript for type safety
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ installed
+- An OpenAI API key (get one at [platform.openai.com](https://platform.openai.com))
+
+### Setup
+
+First, set up your environment variables:
+
+1. Add your OpenAI API key to `.env.local`:
+```bash
+OPENAI_API_KEY=your-actual-api-key-here
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -14,11 +37,25 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to start chatting with the AI assistant.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/page.tsx` - Main page component
+- `app/api/chat/route.ts` - API endpoint for chat with streaming
+- `components/Chat.tsx` - Chat UI component with conversation management
+
+## How It Works
+
+The application uses the Vercel AI SDK's `useChat` hook for conversation management and streaming responses. Messages are sent to the `/api/chat` endpoint, which uses the AI SDK to stream responses from OpenAI's GPT-4o-mini model.
+
+## Technologies Used
+
+- [Next.js 14](https://nextjs.org/) - React framework
+- [Vercel AI SDK](https://sdk.vercel.ai/docs) - AI integration
+- [OpenAI GPT-4o-mini](https://openai.com/) - Language model
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
 
 ## Learn More
 
