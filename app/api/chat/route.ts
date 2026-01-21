@@ -2,7 +2,7 @@ import { openai } from '@ai-sdk/openai';
 import { StreamingTextResponse, streamText } from 'ai';
 import raindrop from 'raindrop-ai/otel';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 // Generate a unique user ID for this session
 // In production, this should come from your authentication system
