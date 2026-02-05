@@ -10,8 +10,12 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.66",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/sdk-trace-base": "^2.5.0",
+    "@vercel/otel": "^2.1.0",
     "ai": "^3.4.33",
     "next": "16.1.4",
+    "raindrop-ai": "^0.0.80",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "zod": "^3.25.76"
