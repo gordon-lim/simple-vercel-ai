@@ -1,10 +1,35 @@
 'use client';
 
 import { useChat } from 'ai/react';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+
+function getOrCreateUserId(): string {
+  if (typeof window === 'undefined') return '';
+  const key = 'raindrop_user_id';
+  let userId = localStorage.getItem(key);
+  if (!userId) {
+    userId = crypto.randomUUID();
+    localStorage.setItem(key, userId);
+  }
+  return userId;
+}
+
+function generateConvoId(): string {
+  return crypto.randomUUID();
+}
 
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
+  const [userId, setUserId] = useState<string>('');
+  const [convoId, setConvoId] = useState<string>('');
+
+  useEffect(() => {
+    setUserId(getOrCreateUserId());
+    setConvoId(generateConvoId());
+  }, []);
+
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    body: { userId, convoId },
+  });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
